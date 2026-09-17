@@ -1,7 +1,12 @@
 import type { Product } from '../types';
+import { placeholderImage } from '../lib/placeholder';
 
-const img = (seed: string, w = 900, h = 1125) =>
-  `https://picsum.photos/seed/${seed}/${w}/${h}`;
+const img = (seed: string) => {
+  const match = seed.match(/^(.*)-(\d+)$/);
+  const base = match ? match[1] : seed;
+  const variant = match ? Number(match[2]) - 1 : 0;
+  return placeholderImage(seed, { label: base[0]?.toUpperCase(), variant });
+};
 
 export const categories = [
   'Outerwear',

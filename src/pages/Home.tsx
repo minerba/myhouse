@@ -2,9 +2,12 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, RefreshCw, ShieldCheck, Truck } from 'lucide-react';
 import { categories, products } from '../data/products';
 import { ProductCard } from '../components/ProductCard';
+import { placeholderImage } from '../lib/placeholder';
 
-const heroImg = (seed: string, w = 1200, h = 1400) =>
-  `https://picsum.photos/seed/${seed}/${w}/${h}`;
+const heroImg = (seed: string, w = 1200, h = 1400) => {
+  const label = seed.startsWith('cat-') ? seed.slice(4) : 'ATELIER';
+  return placeholderImage(seed, { label, w, h });
+};
 
 export function Home() {
   const bestSellers = products.filter((p) => p.isBestSeller).slice(0, 4);
