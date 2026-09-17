@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Supabase CLI local cache (created at repo root when the CLI is run
+# from a nested directory without its own linked project)
+/supabase/.temp/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
