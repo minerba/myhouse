@@ -28,6 +28,19 @@
     "plugins": [
       "expo-router",
       "expo-status-bar"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "43e00437-5e05-4514-916f-16c32fb7869e"
+      }
+    },
+    "owner": "jin0.bang",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/43e00437-5e05-4514-916f-16c32fb7869e"
+    }
   }
 }
