@@ -20,52 +20,33 @@
 5. 기업이 점수·피드백·정규직 전환 의향을 평가
 6. 평가가 구직자의 "검증된 실적"으로 누적되어, 다른 기업도 프로필에서 확인 가능
 
-## 계정 생성 체크리스트 (5분)
+## 현재 배포 상태
 
-이 프로젝트를 실제로 띄우려면 아래 두 계정이 필요합니다. 코드는 이미 다 준비되어
-있으니, 계정을 만들고 값 몇 개만 알려주시면 바로 연결해서 실행 가능한 상태로
-만들어드릴게요.
+| 구성 요소 | 상태 | 위치 |
+| --- | --- | --- |
+| Supabase 프로젝트 | 생성 완료 (`folioup`, Seoul 리전), 스키마 적용 완료 | Supabase 대시보드 → 조직 `JinyoungBang` → `folioup` |
+| 웹 대시보드 (기업용) | Vercel 배포 완료 | https://web-sage-one-23.vercel.app |
+| GitHub 연동 | `minerba/myhouse` 저장소 연결됨, `claude/annyeong-ecxcip` 브랜치로 푸시하면 자동 재배포 | Root Directory: `folioup/web` |
+| 모바일 앱 (구직자용) | 코드 준비 완료, 로컬에서 Expo Go로 실행 | 아래 참고 |
 
-### 1. Supabase
+기업 계정으로 https://web-sage-one-23.vercel.app/login 에서 바로 회원가입해서 사용해보실
+수 있어요.
 
-1. https://supabase.com → 가입 → **New Project** 생성 (region은 `Northeast Asia (Seoul)` 권장)
-2. 프로젝트 생성 후 좌측 메뉴 **SQL Editor** → New query
-3. 이 저장소의 `folioup/supabase/schema.sql` 내용을 그대로 붙여넣고 실행 (테이블 +
-   RLS 정책이 한 번에 생성됩니다)
-4. 좌측 메뉴 **Project Settings → API**에서 다음 두 값을 복사해서 알려주세요:
-   - `Project URL`
-   - `anon public` key
-
-### 2. Vercel (기업용 웹 대시보드 배포)
-
-1. https://vercel.com → GitHub 계정으로 가입/로그인
-2. **Add New → Project** → 이 저장소(`minerba/myhouse`) 선택
-3. **Root Directory**를 `folioup/web`으로 지정 (모노레포이므로 필수)
-4. **Environment Variables**에 아래 두 개 추가 (Supabase에서 복사한 값):
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-5. Deploy
-
-### 3. Expo Go (구직자용 iOS 앱 미리보기)
-
-계정 생성이 필요 없습니다. 로컬에서 바로 실행:
+### Expo Go로 모바일 앱 실행하기
 
 ```bash
 cd folioup/mobile
-cp .env.example .env
-# .env에 Supabase URL/anon key 입력
 npm install
 npx expo start
 ```
 
-터미널에 뜨는 QR 코드를 아이폰의 **Expo Go** 앱(App Store에서 무료 설치)으로 스캔하면
-바로 앱이 실행됩니다.
+`.env`는 이미 실제 Supabase 값으로 채워져 있습니다 (git에는 커밋되지 않음). 터미널에
+뜨는 QR 코드를 아이폰의 **Expo Go** 앱(App Store에서 무료 설치)으로 스캔하면 바로
+앱이 실행됩니다.
 
-## 알려주실 것
+### 참고
 
-위 체크리스트를 마치신 후 아래 값들만 알려주시면 제가 직접 연결하고, 정상 동작까지
-확인해드릴게요.
-
-- Supabase Project URL
-- Supabase anon public key
-- (선택) Vercel 배포 URL — 확인용
+- Supabase 프로젝트 생성 시 사용한 DB 비밀번호는 저장해두지 않았습니다. 필요하시면
+  Supabase 대시보드 → Project Settings → Database에서 재설정하실 수 있어요.
+- 무료 티어 프로젝트 2개 제한 때문에 기존 `myhouse` Supabase 프로젝트는 일시정지
+  처리했습니다. 대시보드에서 언제든 다시 활성화(Restore)하실 수 있습니다.
