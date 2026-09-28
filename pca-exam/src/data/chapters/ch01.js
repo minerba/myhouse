@@ -277,7 +277,7 @@ export default [
       '전자상거래 기업이 웹·앱 클릭스트림을 실시간으로 수집해 1분 단위 매출·전환 지표를 BigQuery 대시보드에 반영하려 한다. 이벤트는 네트워크 지연으로 늦게 도착하기도 하며, 중복 집계 없이 정확한 결과가 필요하다. 트래픽은 시간대별로 10배 이상 차이가 나고, 서버 관리를 원하지 않는다. 어떤 파이프라인이 가장 적합한가?',
     options: [
       'Pub/Sub로 이벤트를 받고 Dataflow 스트리밍 파이프라인에서 이벤트 시간 기반 윈도와 워터마크로 집계해 BigQuery에 쓴다.',
-      '이벤트를 Cloud Storage에 파일로 저장하고 매시간 Dataproc 클러스터에서 Spark 배치 작업을 실행한다.',
+      '이벤트를 Cloud Storage에 파일로 저장하고 매시간 Managed Service for Apache Spark(구 Dataproc) 클러스터에서 Spark 배치 작업을 실행한다.',
       '애플리케이션이 Cloud SQL에 직접 쓰고, 1분마다 Cloud Scheduler가 집계 쿼리를 실행한다.',
       'Compute Engine VM에 Kafka와 자체 집계 서비스를 설치해 운영한다.',
     ],

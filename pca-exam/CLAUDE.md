@@ -49,7 +49,11 @@ pca-exam/
 6. **복수 정답**은 본문 끝에 `(2개 선택)`처럼 개수를 표기한다. 단일 정답에는 표기하지 않는다.
 7. 보기 순서가 섞이므로 해설·본문에 **"A번", "보기 B", "첫 번째 보기" 같은 글자·위치 참조 금지**. "위의 모두" 류 보기도 금지. 해설에서 다른 보기를 가리킬 땐 내용으로 지칭한다.
 8. 서비스 한도·리전별 기능·신규/개명 서비스처럼 **바뀔 수 있는 사실은 공식 문서로 확인**하고, 불확실하면 쓰지 않는다. 구체적 수치(한도, SLA %)는 꼭 필요할 때만 쓴다.
-9. 2026-04 Vertex AI → **Gemini Enterprise Agent Platform** 개명 반영: 본문에서는 "Agent Platform(구 Vertex AI)"처럼 병기한다. 명칭 대응표: https://docs.cloud.google.com/gemini-enterprise-agent-platform/vertex-ai-name-changes
+9. **개명된 서비스는 새 이름 + (구 이름)으로 병기**한다. 확인된 개명:
+   - Vertex AI → **Gemini Enterprise Agent Platform** (2026-04, 예: Vertex AI Pipelines → Agent Platform Pipelines, Vertex AI Search → Agent Search). 대응표: https://docs.cloud.google.com/gemini-enterprise-agent-platform/vertex-ai-name-changes
+   - Dataproc(클러스터·Serverless for Apache Spark) → **Managed Service for Apache Spark** (문서 경로 `/managed-spark/`)
+   - Cloud Composer → **Managed Service for Apache Airflow**, Dataplex → **Knowledge Catalog**
+   - 문서 URL 기본 도메인은 `docs.cloud.google.com`. `check-links`가 리디렉션을 보고하면 제품명 변경 여부를 확인한다.
 10. 도메인 분포는 공식 가이드 비중(25 / 17.5 / 17.5 / 15 / 12.5 / 12.5%)을 따른다. 챕터별 계획은 `CHAPTER_PLAN`.
 
 ## 검증 스니펫

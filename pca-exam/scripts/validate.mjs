@@ -19,6 +19,7 @@ const ALLOWED_HOSTS = [
   'support.google.com',
   'workspace.google.com',
   'kubernetes.io',
+  'dora.dev', // Google Cloud의 DORA(DevOps Research and Assessment) 연구
 ]
 
 // 보기 순서를 섞어서 출제하므로 글자·위치 참조는 금지
