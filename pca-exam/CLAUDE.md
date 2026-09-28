@@ -53,6 +53,8 @@ pca-exam/
    - Vertex AI → **Gemini Enterprise Agent Platform** (2026-04, 예: Vertex AI Pipelines → Agent Platform Pipelines, Vertex AI Search → Agent Search). 대응표: https://docs.cloud.google.com/gemini-enterprise-agent-platform/vertex-ai-name-changes
    - Dataproc(클러스터·Serverless for Apache Spark) → **Managed Service for Apache Spark** (문서 경로 `/managed-spark/`)
    - Cloud Composer → **Managed Service for Apache Airflow**, Dataplex → **Knowledge Catalog**, Analytics Hub → **BigQuery sharing**, Agentspace → **Gemini Enterprise**, Vertex AI Agent Engine → **Agent Runtime**
+   - Vertex AI Search for commerce → **AI Commerce Search**(Gemini Enterprise for Customer Experience), Dialogflow CX → **CX Agent Studio**로 발전, Anthos clusters on bare metal → **Google Distributed Cloud software only**
+   - **Vertex Explainable AI는 지원 중단(deprecated)** — 정답으로 쓰지 않는다
    - 문서 URL 기본 도메인은 `docs.cloud.google.com`. `check-links`가 리디렉션을 보고하면 제품명 변경 여부를 확인한다.
 10. 도메인 분포는 공식 가이드 비중(25 / 17.5 / 17.5 / 15 / 12.5 / 12.5%)을 따른다. 챕터별 계획은 `CHAPTER_PLAN`.
 
@@ -86,8 +88,10 @@ npm run build           # validate 후 프로덕션 빌드
   - `npm run validate` 통과(유사도 55% 이상 쌍 없음), `npm run check-links` 공식 문서 링크 전부 200
   - 복수 정답 문항 12개
 
+- **2단계 완료**: 케이스 스터디 4종 × 12 = 48문항(`data/cases/`). validate 통과, 링크 513개 전부 200 (복수 정답은 전체 19문항)
+- README 작성
+
 ## 남은 작업
 
-- 2단계: 케이스 스터디 문제 작성(4종) 및 앱 트랙 점검
 - 3~4단계: 세션 복구·검색·가중 출제 동작 확인(브라우저 테스트)
 - 5단계: 빌드 확인, README 작성
