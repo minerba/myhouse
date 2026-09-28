@@ -20,6 +20,7 @@ const ALLOWED_HOSTS = [
   'workspace.google.com',
   'kubernetes.io',
   'dora.dev', // Google Cloud의 DORA(DevOps Research and Assessment) 연구
+  'google.aip.dev', // Google API 설계 가이드(AIP)
 ]
 
 // 보기 순서를 섞어서 출제하므로 글자·위치 참조는 금지
