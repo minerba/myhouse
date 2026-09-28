@@ -52,7 +52,7 @@ pca-exam/
 9. **개명된 서비스는 새 이름 + (구 이름)으로 병기**한다. 확인된 개명:
    - Vertex AI → **Gemini Enterprise Agent Platform** (2026-04, 예: Vertex AI Pipelines → Agent Platform Pipelines, Vertex AI Search → Agent Search). 대응표: https://docs.cloud.google.com/gemini-enterprise-agent-platform/vertex-ai-name-changes
    - Dataproc(클러스터·Serverless for Apache Spark) → **Managed Service for Apache Spark** (문서 경로 `/managed-spark/`)
-   - Cloud Composer → **Managed Service for Apache Airflow**, Dataplex → **Knowledge Catalog**
+   - Cloud Composer → **Managed Service for Apache Airflow**, Dataplex → **Knowledge Catalog**, Analytics Hub → **BigQuery sharing**, Agentspace → **Gemini Enterprise**, Vertex AI Agent Engine → **Agent Runtime**
    - 문서 URL 기본 도메인은 `docs.cloud.google.com`. `check-links`가 리디렉션을 보고하면 제품명 변경 여부를 확인한다.
 10. 도메인 분포는 공식 가이드 비중(25 / 17.5 / 17.5 / 15 / 12.5 / 12.5%)을 따른다. 챕터별 계획은 `CHAPTER_PLAN`.
 
@@ -82,10 +82,10 @@ npm run build           # validate 후 프로덕션 빌드
 ## 현재 상태
 
 - 앱 뼈대(React+Vite PWA, 세션 복구, 검색, 가중 모의고사, Supabase 동기화 코드), 검증·링크 검사 스크립트, 케이스 스터디 4종 요약 완료
-- 문제: 챕터 1~4 완료(200문항), 모든 공식 문서 링크 200 확인
+- 문제: 챕터 1~5 완료(250문항), 모든 공식 문서 링크 200 확인
 
 ## 남은 작업
 
-- 챕터 5~10 문제 작성 (각 50문항)
+- 챕터 6~10 문제 작성 (각 50문항)
 - 케이스 스터디 문제 작성
 - 빌드·UI 점검, README 작성
