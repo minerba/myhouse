@@ -26,6 +26,7 @@ async function status(url) {
 
 const list = [...urls.keys()]
 const bad = []
+const redirected = []
 let i = 0
 async function worker() {
   while (i < list.length) {
@@ -33,9 +34,20 @@ async function worker() {
     let r = await status(url)
     if (r.code !== 200) r = await status(url) // 일시 오류 대비 1회 재시도
     if (r.code !== 200) bad.push({ url, ...r, ids: urls.get(url) })
+    else {
+      const from = new URL(url).pathname.replace(/\/$/, '')
+      const to = new URL(r.final).pathname.replace(/\/$/, '')
+      // 상위 경로로 리디렉션되면 페이지가 없는 것(소프트 404)으로 간주
+      if (to !== from && from.startsWith(to + '/')) bad.push({ url, code: 'parent-redirect', final: r.final, ids: urls.get(url) })
+      else if (to !== from) redirected.push({ url, final: r.final })
+    }
   }
 }
 await Promise.all(Array.from({ length: 8 }, worker))
 console.log(`링크 ${list.length}개 확인, 실패 ${bad.length}개`)
 for (const b of bad) console.log(`  ${b.code} ${b.url} (${b.ids.slice(0, 5).join(', ')})`)
+if (redirected.length) {
+  console.log(`리디렉션 ${redirected.length}개 (내용이 맞는지 확인):`)
+  for (const r of redirected) console.log(`  ${r.url} → ${r.final}`)
+}
 process.exit(bad.length ? 1 : 0)

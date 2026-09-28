@@ -1,6 +1,11 @@
 import { domainById } from '../data/domains.js'
 import { caseById } from '../caseStudies.js'
 import { isCorrect } from '../lib/session.js'
+import { rng, shuffle } from '../lib/random.js'
+
+// 순서가 주어지지 않은 화면(검색·오답 노트)에서도 원본 정답 위치가 드러나지 않도록 id 기반 고정 셔플
+const hash = (s) => [...s].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) >>> 0, 7)
+const stableOrder = (q) => shuffle(q.options.map((_, i) => i), rng(hash(q.id)))
 
 const LABELS = 'ABCDEF'
 
@@ -10,7 +15,7 @@ const LABELS = 'ABCDEF'
  */
 export default function QuestionView({ q, order, selected = [], onChange, reveal, bookmarked, onBookmark, number }) {
   const multi = q.answer.length > 1
-  const display = order ?? q.options.map((_, i) => i)
+  const display = order ?? stableOrder(q)
   const toggle = (idx) => {
     if (!onChange || reveal) return
     if (multi) {
