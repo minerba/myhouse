@@ -1,0 +1,38 @@
+name: Deploy PCA exam app
+
+on:
+  push:
+    branches: [claude/gcp-pca-exam-app-52lw9n]
+    paths: ['pca-exam/**', '.github/workflows/deploy-pca-exam.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: pca-exam/package-lock.json
+      - run: npm ci
+        working-directory: pca-exam
+      - run: npm run build
+        working-directory: pca-exam
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+      - name: Publish dist to gh-pages branch
+        working-directory: pca-exam/dist
+        run: |
+          touch .nojekyll
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Deploy ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
